@@ -1,0 +1,20 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bloque{
+  display: inline-block;
+  background: #dcdcdc;
+  box-shadow: 4px 4px 2px gray;
+  margin:30px 2px;
+  text-align: left ;
+  font-size: large;
+  font-family: sans-serif;
+
+}
+.datos{
+  border:1px solid black;
+  margin: 5px;
+  padding:2px;
+}

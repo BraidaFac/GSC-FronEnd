@@ -1,0 +1,31 @@
+<div class="container">
+<div class="bloque">
+  <div class="datos">
+    Evento:
+  </div>
+  <div class="datos">
+    Fecha:
+  </div>
+  <div class="datos">
+    Hora:
+  </div>
+  <div class="datos">
+    Direccion:
+  </div>
+</div>
+
+<div class="bloque">
+  <div class="datos">
+    {{ event.name }}
+  </div>
+  <div class="datos">
+    {{ event.date }}
+  </div>
+  <div class="datos">
+    {{ event.time }}
+  </div>
+  <div class="datos">
+    {{ event.location.address }}, {{ event.location.city }}, {{ event.location.country }}
+  </div>
+</div>
+</div>
