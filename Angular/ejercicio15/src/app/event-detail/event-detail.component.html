@@ -1,0 +1,12 @@
+<ng-container *ngIf="event">
+  <h2 style="text-align: center;">Detalles de {{event.name}}</h2>
+  <div style="display: flex;justify-content: center; flex-direction: column;align-items: center;">
+    <ul>
+      <li>Fecha: {{event.date}}</li>
+      <li>Hora: {{event.time}}</li>
+      <li>Lugar: {{event.location.address+", "+event.location.city+", "+event.location.country}}</li>
+      <input style="margin-left: 40px"(click)="onClick()" type="checkbox"><p style="display:inline-block; color: rebeccapurple;">Revisado</p>
+    </ul>
+    <button (click)="regresarEvents()">Regrasar a eventos</button>
+  </div>
+</ng-container>

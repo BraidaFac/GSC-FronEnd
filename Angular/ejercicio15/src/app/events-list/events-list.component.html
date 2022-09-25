@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>Event</th>
-        <th>Date</th>      
+        <th>Date</th>
         <th>Time</th>
         <th>Address</th>
       </tr>
@@ -13,11 +13,20 @@
     <tbody>
       <tr *ngFor="let event of events">
         <td>{{event.name}}</td>
-        <td>{{event.date}} </td>      
+        <td>{{event.date}} </td>
         <td>{{event.time}}</td>
         <td>{{event.location.address}}, {{event.location.city}}, {{event.location.country}}</td>
+        <td><a [routerLink]="['/details',event.id]">Detalles</a></td>
+      </tr>
+      <tr>
+        <td>ANGULAR EVENT</td>
+        <td>05/09/2023</td>
+        <td>15:00:00</td>
+        <td>Pelegrini, Rosario, Argentina</td>
+        <td><a [routerLink]="['/details',4]">Detalles</a></td>
       </tr>
     </tbody>
   </table>
+
 
 </div>

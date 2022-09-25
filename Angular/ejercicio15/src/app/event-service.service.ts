@@ -7,6 +7,7 @@ import { Event } from './event';
 export class EventServiceService {
   events: Event[] = [
     {
+      id:0,
       name: 'Angular Connect',
       date: '9/26/2036',
       time: '10am',
@@ -17,6 +18,7 @@ export class EventServiceService {
       }
     },
     {
+      id:1,
       name: 'ng-nl',
       date: '4/15/2037',
       time: '9am',
@@ -26,7 +28,7 @@ export class EventServiceService {
         country: 'NL'
       }
     },
-    {
+    { id:2,
       name: 'ng-conf 2037',
       date: '4/15/2037',
       time: '9am',
@@ -36,7 +38,7 @@ export class EventServiceService {
         country: 'USA'
       }
     },
-    {
+    { id:3,
       name: 'UN Angular Summit',
       date: '6/10/2037',
       time: '8am',
@@ -49,6 +51,12 @@ export class EventServiceService {
   ]
   getEvents():Event[]{
     return this.events;
+  }
+  getEventById(id:string|null):Event|undefined{
+    if(!id){
+      return undefined;
+    }
+    return this.events.find(e => e.id===+id);
   }
   constructor() { }
 }
