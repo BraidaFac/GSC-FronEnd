@@ -1,7 +1,9 @@
 import { FormControl, ValidationErrors } from '@angular/forms'
+import{EventService}from './event.service'
 
+export class ValidacionesPropias{
 
-export function MayusValidatorDirective(control : FormControl):ValidationErrors | null {
+   static MayusValidator(control : FormControl):ValidationErrors | null {
   const country : string =control.value;
   let count : number =0;
   for (const letter of country) {
@@ -13,7 +15,10 @@ export function MayusValidatorDirective(control : FormControl):ValidationErrors 
     }
 
   return {'dosMayus':true};
+  //DEVUELVE TRUE SI EL VALIDADOR ESTA VERIFICANDO QUE YA EXISTE ESE NOMBRE DE EVENTO
+  }
+
 }
-//DEVUELVE TRUE SI EL VALIDADOR ESTA VERIFICANDO QUE NO HAY DOS MAYSUCULAS
+
 
 

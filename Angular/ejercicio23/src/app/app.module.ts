@@ -7,6 +7,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NameDirective } from './name.directive';
 
 @NgModule({
   declarations: [

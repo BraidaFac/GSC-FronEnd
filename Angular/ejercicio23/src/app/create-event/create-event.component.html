@@ -2,22 +2,23 @@
   <form [formGroup]="eventForm" (ngSubmit)="submit()" >
     <div class="form-group">
       <label for="name">Nombre del evento:</label>
-      <input id="name" type="text" formControlName="name"/>
-      <div *ngIf="eventForm.get('name').invalid && (eventForm.get('name').dirty || eventForm.get('name').touched)">
-        <p *ngIf="eventForm.get('name').errors.required">Campo obligatorio.</p>
-        <p *ngIf="eventForm.get('name').errors.minlength">Dos letras como minimo</p>
+      <input id="name" type="text" formControlName="name" [ngStyle]="inputDynamicStyles('name')"/>
+        <div *ngIf="eventForm.get('name').invalid && (eventForm.get('name').dirty || eventForm.get('name').touched)">
+          <p  *ngIf="eventForm.get('name').errors.required">Campo obligatorio.</p>
+          <p *ngIf="eventForm.get('name').errors.minlength">Dos letras como minimo</p>
+          <p *ngIf="eventForm.get('name').errors.repeatName">Ya existe el evento</p>
       </div>
     </div>
     <div class="form-group">
       <label for="event-name">Fecha: </label>
-      <input placeholder="dd/mm/aaaa"id="date" type="text" required formControlName="date"/>
+      <input placeholder="dd/mm/aaaa"id="date" type="text"  formControlName="date" [ngStyle]="inputDynamicStyles('date')"/>
       <div *ngIf="eventForm.get('date').invalid && (eventForm.get('date').dirty || eventForm.get('date').touched)">
       <p *ngIf="eventForm.get('date').errors.required">Este campo es obligatorio.</p>
     </div>
     </div>
     <div class="form-group">
       <label for="event-name">Hora: </label>
-      <input type="text" formControlName="time"/>
+      <input type="text" formControlName="time" [ngStyle]="inputDynamicStyles('time')"/>
       <div *ngIf="eventForm.get('time').invalid && (eventForm.get('time').dirty || eventForm.get('time').touched)">
       <p *ngIf="eventForm.get('time').errors.required">Este campo es obligatorio.</p>
     </div>
@@ -25,15 +26,16 @@
     <div formGroupName="location">
           <div class="form-group" >
             <label for="event-name">Dirección: </label>
-            <input id="address" type="text" formControlName="address"/>
+            <input id="address" type="text" formControlName="address"[ngStyle]="inputDynamicStyles('location.address')"/>
 
-           <div *ngIf="eventForm.get('location').get('address').invalid && (eventForm.get('location').get('address').dirty || eventForm.get('location').get('address').touched)">
+            <!-- Asi se puede mapear el subgroup con un solo get -->
+           <div *ngIf="eventForm.get('location.address').invalid && (eventForm.get('location').get('address').dirty || eventForm.get('location').get('address').touched)">
             <p *ngIf="eventForm.get('location').get('address').errors.required">Este campo es obligatorio.</p>
           </div>
           </div>
           <div class="form-group">
             <label for="event-name">Ciudad: </label>
-            <input id="city" type="text" formControlName="city"/>
+            <input id="city" type="text" formControlName="city" [ngStyle]="inputDynamicStyles('location.city')"/>
             <div *ngIf="eventForm.get('location').get('city').invalid && (eventForm.get('location').get('city').dirty || eventForm.get('location').get('city').touched)">
             <p *ngIf="eventForm.get('location').get('city').errors.required">Este campo es obligatorios.</p>
           </div>
@@ -41,15 +43,14 @@
 
           <div class="form-group">
             <label for="event-name">Pais: </label>
-            <input id="country" type="text" formControlName="country"/>
+            <input id="country" type="text" formControlName="country" [ngStyle]="inputDynamicStyles('location.country')"/>
             <div *ngIf="eventForm.get('location').get('country').invalid && (eventForm.get('location').get('country').dirty || eventForm.get('location').get('country').touched)">
             <p *ngIf="eventForm.get('location').get('country').errors.required">Este campo es obligatorios.</p>
               <p *ngIf="eventForm.get('location').get('country').errors.dosMayus">Es obligatorio ingresar dos mayusculas.</p>
             </div>
-
           </div>
     </div>
-    <button type="submit" [disabled]="eventForm.valid" class="btn btn-primary">Guardar</button>
+    <button type="submit" [disabled]="eventForm.invalid"  class="btn btn-primary">Guardar</button>
     <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
   </form>
 </div>

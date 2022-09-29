@@ -1,3 +1,12 @@
-form { margin-top: 10px; }                                                  
-label { display: block; }                                                   
-.form-group { margin-top: 5px; } 
+form { margin-top: 10px; }
+label { display: block; }
+.form-group { margin-top: 5px; }
+
+
+/* .form-group .ng-valid {
+  border-color:  rgb(22, 183, 70);
+}
+.ng-touched .ng-invalid {
+  border-color:  rgb(143, 26, 26);
+} */
+
