@@ -1,0 +1,59 @@
+<div>
+  <form #eventForm="ngForm" (ngSubmit)="submit()" >
+    <div class="form-group">
+      <label for="name">Nombre del evento:</label>
+
+      <input required minlength="2"  #name="ngModel" nameRepeat id="name" name="name" [(ngModel)]="event.name"type="text" />
+         <div *ngIf="name.invalid&& name.touched" >
+          <p *ngIf="name.errors.required">Campo obligatorio.</p>
+          <p *ngIf="name.errors.minlength"> Dos letras como minimo</p>
+          <p *ngIf="name.errors.nameRepeat" >Ya existe el evento</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="event-name">Fecha: </label>
+      <input required  #date="ngModel" appDateValidator name="date"[(ngModel)]="event.date"placeholder="mm/dd/aaaa"id="date" type="text" />
+      <p>{{date.errors|json}}</p>
+     <div *ngIf="date.invalid&& date.touched" >
+      <p>Este campo es obligatorio.</p>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="event-name">Hora: </label>
+      <input required #time="ngModel"name="time"[(ngModel)]="event.time" type="text"  />
+      <div *ngIf="time.invalid&& time.touched" >
+      <p >Este campo es obligatorio.</p>
+    </div>
+    </div>
+    <div >
+          <div class="form-group" >
+            <label for="event-name">Dirección: </label>
+            <input required #address="ngModel" name="address"[(ngModel)]="event.location.address" id="address" type="text" />
+
+            <!-- Asi se puede mapear el subgroup con un solo get -->
+           <div *ngIf="address.invalid&& address.touched">
+            <p >Este campo es obligatorio.</p>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="event-name">Ciudad: </label>
+            <input required #city="ngModel"  name="city"[(ngModel)]="event.location.city" id="city" type="text" />
+            <div *ngIf="city.invalid&& city.touched">
+            <p >Este campo es obligatorios.</p>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label for="event-name">Pais: </label>
+            <input required  mayusValidator #country="ngModel"  name="country" [(ngModel)]="event.location.country" id="country" type="text" />
+            <p>{{country.errors|json}}</p>
+             <div *ngIf="country.invalid&& country.touched">
+              <p *ngIf="country.errors.required">Este campo es obligatorios.</p>
+              <p *ngIf="country.errors.mayus">Es obligatorio ingresar dos mayusculas.</p>
+            </div>
+          </div>
+    </div>
+    <button type="submit" [disabled]="eventForm.invalid"class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
+  </form>
+</div>
