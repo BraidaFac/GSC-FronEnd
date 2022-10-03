@@ -11,6 +11,7 @@ import { ParentComponent } from './parent/parent.component';
   ],
   imports: [
     BrowserModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

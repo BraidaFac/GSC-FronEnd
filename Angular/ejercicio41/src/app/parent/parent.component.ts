@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
+import{} from 'rxjs'
+
 
 @Component({
   selector: 'app-parent',
@@ -12,17 +14,25 @@ export class ParentComponent implements OnInit {
   result;
   promise;
 
-  constructor() { 
+  constructor() {
     this.obs = of(35);
   }
 
   ngOnInit() {
+
+    this.promise= new Promise((resolve,reject)=>{
+
+    this.obs.subscribe(val=>{
+     next: resolve(val);
+    })})}
+
     // ingrese el código aquí
-  }
+
 
   listen() {
     this.promise.then((val) => {
       this.result = val;
+
     })
   }
 
