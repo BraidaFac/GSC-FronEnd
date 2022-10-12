@@ -21,10 +21,18 @@ export class ParentComponent implements OnInit {
   }
 
   sortAsc() {
-    // Implementar
+    this.movies=this.movies.sort((film1,film2)=>{
+    if(film1.rating<film2.rating)return 1
+    else if(film1.rating>film2.rating)return -1
+    else return 0}
+    )
   }
 
   sortDesc() {
-    // Implementar
+    this.movies=this.movies.sort((film1,film2)=>{
+      if(film1.rating<film2.rating)return -1
+      else if(film1.rating>film2.rating)return 1
+      else return 0}
+      )
   }
 }

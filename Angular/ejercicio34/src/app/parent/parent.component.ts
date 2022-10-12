@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
-
+  displayedMovies;
   movies = [
     { name:  "Star Wars Episode X", rating: "PG" },
     { name:  "Rocky XV", rating: "PG-13" },
@@ -15,12 +15,17 @@ export class ParentComponent implements OnInit {
     { name:  "Finding Dory's Grandkids", rating: "G" },
   ];
 
-  constructor() { }
+  constructor() {
+    this.displayedMovies=this.movies.slice();
+  }
 
   ngOnInit() {
   }
 
   filter(rating) {
+    this.displayedMovies= this.movies.filter(film=>{
+      if(film.rating===rating)return film
+    })
   }
 
 }

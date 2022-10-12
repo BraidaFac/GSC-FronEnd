@@ -1,4 +1,4 @@
-  
+
     <h1>Utilizando parámetros de consulta</h1>
     <form>
     Ciudad: <input type="text" name="city" [(ngModel)]="city">
@@ -7,5 +7,5 @@
     </form>
     <br />
     <br />
-    
-    Pronostico para mañana: {{ forecast }}
+
+    Pronostico para mañana: {{ forecast |json }}

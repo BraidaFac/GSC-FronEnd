@@ -1,4 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { httpFactory } from '@angular/http/src/http_module';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpServiceService } from '../http-service.service';
+import { Movie } from '../movie';
 
 @Component({
   selector: 'app-parent',
@@ -7,14 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
 
-  movieList;
+  movieList: Movie[];
 
-  constructor() { }
+  constructor(private _service: HttpServiceService) { }
 
   ngOnInit() {
   }
 
-  makeRequest() {
+  makeRequest(): void {
+
+    this._service.getMessage().subscribe({ next: (movies) => this.movieList = movies })
 
   }
 }
+

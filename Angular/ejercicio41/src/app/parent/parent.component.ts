@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import{} from 'rxjs'
+import{ lastValueFrom} from 'rxjs'
 
 
 @Component({
@@ -20,11 +20,14 @@ export class ParentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.promise= new Promise((resolve,reject)=>{
+    this.promise=this.getPromiseUseLast();
+  }
 
-    this.obs.subscribe(val=>{
-     next: resolve(val);
-    })})}
+    // this.promise= new Promise((resolve,reject)=>{
+
+    // this.obs.subscribe(val=>{
+    //  next: resolve(val);
+    // })})}
 
     // ingrese el código aquí
 
@@ -35,5 +38,9 @@ export class ParentComponent implements OnInit {
 
     })
   }
+  public async getPromiseUseLast() {
+    return await lastValueFrom(this.obs);
 
+  }
 }
+
